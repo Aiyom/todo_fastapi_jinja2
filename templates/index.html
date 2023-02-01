@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>ToDoList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', path='/style/style.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="myDIV" class="header">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Title...">
+    <span onclick="newElement()" class="addBtn">Search</span>
+    <span id="myBtn" class="addBtn">Add</span>
+</div>
+<ul id="myUL">
+    {% for todo in todoes %}
+
+        {%- if todo.status -%}
+            <li>
+                <h2>{{ todo.title }}</h2>
+                <h4>{{ todo.description }}</h4>
+            </li>
+        {%- else %}
+            <li class="checked">
+                <h3>{{ todo.title }}</h3>                   <h6 class="center">{{ todo.description }}</h6>
+
+            </li>
+        {%- endif %}
+
+
+    {% endfor %}
+</ul>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+
+</div>
+<script src="{{ url_for('static', path='/javascripts/javascript.js') }}"></script>
+</body>
+</html>
